@@ -8,6 +8,10 @@ namespace SnakeLadderPro_Day2
 {
     public class Play
     {
+        
+        public const int CaseOfNoPlay = 0;
+        public const int CaseOfLadder = 1;
+        public const int CaseOfSnake = 2;
         public void Start()
         {
             Console.WriteLine("Start the Snake and Ladder Game");
@@ -15,6 +19,40 @@ namespace SnakeLadderPro_Day2
             Random random = new Random();
             int RollDice = random.Next(1, 6);
             Console.WriteLine("Player 1 rolls the die and get:" + RollDice);
+
+            Random random1 = new Random();
+            int option = random1.Next(3);
+            int position = 0;
+
+
+
+
+            switch (option)
+            {
+                case CaseOfNoPlay:
+
+                    Console.WriteLine("NO PLAY " + position);
+                    Console.WriteLine("player stay in same position");
+                    break;
+
+
+
+                case CaseOfLadder:
+
+                    Console.WriteLine("LADDER " + (RollDice + position));
+                    Console.WriteLine("player move ahead" + RollDice);
+                    break;
+
+
+                case CaseOfSnake:
+
+                    Console.WriteLine("SNAKE " + (RollDice + position));
+                    Console.WriteLine("player moves behind by: " + RollDice);
+                    break;
+
+
+            }
+
         }
     }
 }

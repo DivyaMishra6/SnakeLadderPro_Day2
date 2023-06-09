@@ -8,50 +8,69 @@ namespace SnakeLadderPro_Day2
 {
     public class Play
     {
-        
+
         public const int CaseOfNoPlay = 0;
         public const int CaseOfLadder = 1;
         public const int CaseOfSnake = 2;
+        public const int MaxPosition = 100;
         public void Start()
         {
             Console.WriteLine("Start the Snake and Ladder Game");
             Console.WriteLine("Single Player at Start Position 0");
-            Random random = new Random();
-            int RollDice = random.Next(1, 6);
-            Console.WriteLine("Player 1 rolls the die and get:" + RollDice);
-
-            Random random1 = new Random();
-            int option = random1.Next(3);
+            Console.WriteLine(" ");
             int position = 0;
 
-
-
-
-            switch (option)
+            while (position != MaxPosition)
             {
-                case CaseOfNoPlay:
 
-                    Console.WriteLine("NO PLAY " + position);
-                    Console.WriteLine("player stay in same position");
-                    break;
-
-
-
-                case CaseOfLadder:
-
-                    Console.WriteLine("LADDER " + (RollDice + position));
-                    Console.WriteLine("player move ahead" + RollDice);
-                    break;
+                Random random = new Random();
+                int RollDice = random.Next(1, 6);
+                Console.WriteLine("Player 1 rolls the die and get:" + RollDice);
+                Random random1 = new Random();
+                int option = random1.Next(3);
 
 
-                case CaseOfSnake:
 
-                    Console.WriteLine("SNAKE " + (RollDice + position));
-                    Console.WriteLine("player moves behind by: " + RollDice);
-                    break;
+                switch (option)
+                {
+                    case CaseOfNoPlay:
 
+                        Console.WriteLine("NO PLAY " + position);
+                        Console.WriteLine("player stay in same position");
+                        break;
+
+
+
+                    case CaseOfLadder:
+
+                        Console.WriteLine("LADDER " + (RollDice + position));
+                        Console.WriteLine("player move ahead" + RollDice);
+                        position = RollDice + position;
+                        break;
+
+
+                    case CaseOfSnake:
+
+                        Console.WriteLine("SNAKE " + (RollDice + position));
+                        Console.WriteLine("player moves behind by: " + RollDice);
+                        position = position - RollDice;
+                        break;
+
+
+                }
+                if (position < 0)
+                {
+                    position = 0;
+                    Console.WriteLine("player1 have to restart the game from position:" + position);
+
+                }
+
+                Console.WriteLine("current position of the player is: " + position);
+                Console.WriteLine(" ");
 
             }
+
+            Console.WriteLine("!!**Player1 reach the winning position **!!");
 
         }
     }

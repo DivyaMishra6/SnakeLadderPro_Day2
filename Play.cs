@@ -24,7 +24,7 @@ namespace SnakeLadderPro_Day2
             {
 
                 Random random = new Random();
-                int RollDice = random.Next(1, 6);
+                int RollDice = random.Next(1, 7);
                 Console.WriteLine("Player 1 rolls the die and get:" + RollDice);
                 Random random1 = new Random();
                 int option = random1.Next(3);
@@ -64,6 +64,12 @@ namespace SnakeLadderPro_Day2
                     Console.WriteLine("player1 have to restart the game from position:" + position);
 
                 }
+                if (position > 100)
+                {
+                    position = position - RollDice;
+                    Console.WriteLine("Your chance is skip stay on same position:" + position);
+                }
+
 
                 Console.WriteLine("current position of the player is: " + position);
                 Console.WriteLine(" ");
